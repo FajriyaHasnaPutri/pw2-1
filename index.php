@@ -34,12 +34,14 @@ while($row = pg_fetch_object($result)):
             <td><?= $row->nama ?></td>
             <td><?= $row->kelas ?></td>
             <td>
-<?php
-echo '<a href="hapus.php?nim=' . $row->nim . '">Hapus</a></td>';
-echo '<td><a href="ubah.php?nim=' . $row->nim . '">Ubah</a>';
+            <?php
+echo '<a href="hapus.php?nim=' . $row->nim . '">Hapus</a>'
 ?>
             </td>
         </tr>
-<?php endwhile; ?>
+
+<?php
+  endwhile;
+?>
     </tbody>
 </table>
