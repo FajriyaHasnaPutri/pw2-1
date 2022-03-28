@@ -1,40 +1,33 @@
 <?php
-  include('koneksi.php');
+include('koneksi.php');
+
+$sql = "select * from mahasiswa";
+$result = pg_query($sql);
 ?>
 
-<h3>Aplikasi Mahasiswa</h3>
+<h1>Aplikasi Mahasiswa</h1>
 
-<br>
-<a href="tambah.php">Tambah</a>
-<br>
-
+<a href="tambah.php">Tambah</a><br>
 <table border="1">
     <thead>
         <tr>
             <th>NIM</th>
             <th>NAMA</th>
             <th>KELAS</th>
+            <th>OPSI</th>
         </tr>
     </thead>
     <tbody>
-        <?php
-          
-$sql = "select * from mahasiswa";
-$result = pg_query($sql);
+<?php
+  while($row = pg_fetch_object($result)):
+?>
 
-// if($result) {
-//     echo "Datanya ada";
-// } else {
-//     echo "Datanya tidak ada";
-// }
-while($row = pg_fetch_object($result)):
-        ?>
         <tr>
             <td><?= $row->nim ?></td>
             <td><?= $row->nama ?></td>
             <td><?= $row->kelas ?></td>
             <td>
-            <?php
+<?php
 echo '<a href="hapus.php?nim=' . $row->nim . '">Hapus</a>'
 ?>
             </td>
